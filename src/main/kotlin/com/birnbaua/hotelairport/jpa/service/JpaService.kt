@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
-abstract class JpaService<T: Any,ID: Any> (val repository: JpaRepository<T,ID>) {
+abstract class JpaService<T: Any,ID: Any?> (val repository: JpaRepository<T,ID>) {
 
     fun save(entity: T): T {
         return repository.save(entity)

@@ -26,7 +26,7 @@ data class Hotel(
     var desc: String
 )
 
-interface HotelRepository : JpaRepository<Hotel, Int>
+interface HotelRepository : JpaRepository<Hotel, Int?>
 
 @Service
-class HotelService @Autowired constructor(repository: HotelRepository) : JpaService<Hotel, Int>(repository)
+class HotelService @Autowired constructor(repository: HotelRepository) : JpaService<Hotel, Int?>(repository)

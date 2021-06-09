@@ -25,12 +25,12 @@ class BookingController @Autowired constructor(val serv: BookingService) : Abstr
     }
 
     @PostMapping
-    fun post(entity: Booking, request: HttpServletRequest): ResponseEntity<Booking> {
+    fun post(@RequestBody entity: Booking, request: HttpServletRequest): ResponseEntity<Booking> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: Int, entity: Booking, request: HttpServletRequest): ResponseEntity<Booking> {
+    fun put(@PathVariable id: Int, @RequestBody entity: Booking, request: HttpServletRequest): ResponseEntity<Booking> {
         entity.id = id
         return super.put(entity)
     }

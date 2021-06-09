@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import javax.servlet.http.HttpServletRequest
 
-abstract class AbstractController<T: Any,ID: Any> (val service: JpaService<T,ID>, val clazz: String) {
+abstract class AbstractController<T: Any,ID: Any?> (val service: JpaService<T,ID>, val clazz: String) {
 
     private val log: Log = LogFactory.getLog(clazz)
 

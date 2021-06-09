@@ -22,12 +22,12 @@ class AirportController @Autowired constructor(service: AirportService) : Abstra
     }
 
     @PostMapping
-    fun post(entity: Airport, request: HttpServletRequest): ResponseEntity<Airport> {
+    fun post(@RequestBody entity: Airport, request: HttpServletRequest): ResponseEntity<Airport> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: String, entity: Airport, request: HttpServletRequest): ResponseEntity<Airport> {
+    fun put(@PathVariable id: String, @RequestBody entity: Airport, request: HttpServletRequest): ResponseEntity<Airport> {
         entity.icao = id
         return super.put(entity)
     }

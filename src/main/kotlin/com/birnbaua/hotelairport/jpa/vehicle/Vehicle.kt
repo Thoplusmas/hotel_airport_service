@@ -15,22 +15,23 @@ data class Vehicle(
 
     @Id
     @Column(name = "vehicle_no")
-    var no: Int,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "airport", referencedColumnName = "icao_code")
-    var airport: Airport,
-
-    @ManyToOne
-    @JoinColumn(name = "driver", referencedColumnName = "pin")
-    var driver: Driver,
+    var no: Int?,
 
     @Min(2)
     @Column(name = "no_of_seats")
-    var noOfSeats: Int,
+    var noOfSeats: Int? = 5,
 
     @Column(name = "is_available")
-    var isAvailable: Boolean
+    var isAvailable: Boolean = true,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "airport", referencedColumnName = "icao_code")
+    var airport: Airport?,
+
+    @ManyToOne
+    @JoinColumn(name = "driver", referencedColumnName = "pin")
+    var driver: Driver?
+
 
 )
 

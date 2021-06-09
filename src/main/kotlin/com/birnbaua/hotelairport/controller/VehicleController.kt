@@ -24,12 +24,12 @@ class VehicleController @Autowired constructor(service: VehicleService) : Abstra
     }
 
     @PostMapping
-    fun post(entity: Vehicle, request: HttpServletRequest): ResponseEntity<Vehicle> {
+    fun post(@RequestBody entity: Vehicle, request: HttpServletRequest): ResponseEntity<Vehicle> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: Int, entity: Vehicle, request: HttpServletRequest): ResponseEntity<Vehicle> {
+    fun put(@PathVariable id: Int, @RequestBody entity: Vehicle, request: HttpServletRequest): ResponseEntity<Vehicle> {
         entity.no = id
         return super.put(entity)
     }

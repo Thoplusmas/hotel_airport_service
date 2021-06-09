@@ -20,10 +20,10 @@ data class Airport(
     var icao: String,
 
     @Column(name = "`name`")
-    var name: String,
+    var name: String?,
 
     @Column(name = "`desc`")
-    var desc: String
+    var desc: String?
 )
 
 interface AirportRepository : JpaRepository<Airport, String>

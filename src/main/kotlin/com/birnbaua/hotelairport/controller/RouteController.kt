@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/route")
-class RouteController @Autowired constructor(val serv: RouteService) : AbstractController<Route, Int>(serv,RouteController::class.qualifiedName.toString()) {
+class RouteController @Autowired constructor(val serv: RouteService) : AbstractController<Route, Int?>(serv,RouteController::class.qualifiedName.toString()) {
 
 
     @GetMapping("/{id}")
@@ -38,12 +38,12 @@ class RouteController @Autowired constructor(val serv: RouteService) : AbstractC
     }
 
     @PostMapping
-    fun post(entity: Route, request: HttpServletRequest): ResponseEntity<Route> {
+    fun post(@RequestBody entity: Route, request: HttpServletRequest): ResponseEntity<Route> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: Int, entity: Route, request: HttpServletRequest): ResponseEntity<Route> {
+    fun put(@PathVariable id: Int, @RequestBody entity: Route, request: HttpServletRequest): ResponseEntity<Route> {
         entity.id = id
         return super.put(entity)
     }

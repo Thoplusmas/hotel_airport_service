@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/api/hotel")
-class HotelController @Autowired constructor(service: HotelService) : AbstractController<Hotel, Int>(service,HotelController::class.qualifiedName.toString()) {
+class HotelController @Autowired constructor(service: HotelService) : AbstractController<Hotel, Int?>(service,HotelController::class.qualifiedName.toString()) {
     @GetMapping("/{id}")
     fun get(@PathVariable id: Int, request: HttpServletRequest): ResponseEntity<Hotel> {
         return super.get(id)
@@ -25,12 +25,12 @@ class HotelController @Autowired constructor(service: HotelService) : AbstractCo
     }
 
     @PostMapping
-    fun post(entity: Hotel, request: HttpServletRequest): ResponseEntity<Hotel> {
+    fun post(@RequestBody entity: Hotel, request: HttpServletRequest): ResponseEntity<Hotel> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: Int, entity: Hotel, request: HttpServletRequest): ResponseEntity<Hotel> {
+    fun put(@PathVariable id: Int, @RequestBody entity: Hotel, request: HttpServletRequest): ResponseEntity<Hotel> {
         entity.id = id
         return super.put(entity)
     }

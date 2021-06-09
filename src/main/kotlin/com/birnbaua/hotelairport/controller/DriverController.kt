@@ -22,12 +22,12 @@ class DriverController @Autowired constructor(service: DriverService) : Abstract
     }
 
     @PostMapping
-    fun post(entity: Driver, request: HttpServletRequest): ResponseEntity<Driver> {
+    fun post(@RequestBody entity: Driver, request: HttpServletRequest): ResponseEntity<Driver> {
         return super.post(entity)
     }
 
     @PutMapping("/{id}")
-    fun put(@PathVariable id: String, entity: Driver, request: HttpServletRequest): ResponseEntity<Driver> {
+    fun put(@PathVariable id: String, @RequestBody entity: Driver, request: HttpServletRequest): ResponseEntity<Driver> {
         entity.pin = id
         return super.put(entity)
     }
