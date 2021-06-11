@@ -1,0 +1,102 @@
+
+<p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true">
+    <ng-template pTemplate>
+        Executes a full text search, once enter-key is pressed.
+        <br/>
+        <p-divider>
+            <div class="p-d-inline-flex p-ai-center">
+                <b>Filtering</b>
+            </div>
+        </p-divider>
+        For filtering use key-value pairs followed by a semicolon:<br/>
+        e.g. <b>key:value;</b><br/>
+        key = filter element; value = value you want to search for<br/>
+        Eligible key values:
+        <ul>
+            <li>name</li>
+            <li>description</li>
+            <li>tag</li>
+            <li>updatedFrom (e.g. updatedFrom: 01.01.2021;)</li>
+            <li>updatedTo (e.g. updatedTo: 01.01.2021;)</li>
+            <li>path</li>
+            <li>response</li>
+            <li>parameter</li>
+        </ul>
+        <small class="text-muted">Exemplary search: name:myapi;description:this is my description;path:/pet;</small>
+    </ng-template>
+</p-overlayPanel>
+
+<p-table #dt [value]="data" styleClass="p-datatable-striped" [autoLayout]="false"
+    selectionMode="single" [(selection)]="selectedApi" dataKey="name"
+    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)"
+    [lazy]="true" (onLazyLoad)="loadCustomers($event)"
+    [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [totalRecords]="distinctCount"
+    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [loading]="loading">
+
+    <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-center">
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input style="width: 500px;" pInputText type="text"
+                    (input)="onInputCheckEmpty($event.target.value)" (keyup.enter)="onSearchInput($event.target.value)"
+                    (focus)="op.toggle($event)" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th [ngStyle]="{'width': '15%'}">Name</th>
+            <th [ngStyle]="{'width': '15%'}">Namespace</th>
+            <th [ngStyle]="{'width': '15%'}">Version</th>
+            <th>Description</th>
+            <th [ngStyle]="{'width': '10%'}">Status</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+        <tr [pSelectableRow]="rowData">
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="rowData"
+                    class="p-button-text p-button-rounded p-button-plain"
+                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{rowData.name}}</td>
+            <td>{{rowData.namespace}}</td>
+            <td>{{rowData.version}}</td>
+            <td>{{rowData.description}}</td>
+            <td>{{rowData.status}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData>
+
+        <tr>
+			<td colspan="6">
+				<div class="d-flex flex-row align-items-center">
+
+                    <b>Versions</b>
+                    <div class="p-1" *ngFor="let version of rowData.allVersions| keyvalue">
+                        <button class="p-tag p-tag-rounded p-1 border-0" (click)="onVersionSelect(version.value)"
+                            >{{version.key}}</button>
+                    </div>
+                    <button class="p-tag p-tag-rounded p-1 border-0" (click)="showDialogNewVersion(rowData)"> + </button>
+                </div>
+    
+                <div class="d-flex" *ngIf="rowData.foundLines != undefined && rowData.foundLines.length != 0">
+                    <p>Search matches with following lines:</p><br/>
+                    <ul>
+                        <li *ngFor="let i of rowData.foundLines">
+                            {{i}}
+                        </li>
+                    </ul>
+                </div>
+			</td>
+		</tr>
+    </ng-template>
+</p-table>
+
+<app-upload-dialog [(display)]="displayUploadDialog" (displayChange)="onDialogClose($event)" [apiModel]="apiModelToAdd"></app-upload-dialog>
+
+<a class="float">
+    <button pButton (click)="showDialog()" label="Upload API" icon="pi pi-plus"></button>
+</a>

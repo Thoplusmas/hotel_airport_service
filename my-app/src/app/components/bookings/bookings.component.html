@@ -1,0 +1,104 @@
+<%@page import="java.sql.Time"%>
+<%@page import="com.birnbaua.model.Route"%>
+<%@page import="com.birnbaua.model.Hotel"%>
+<%@page import="com.birnbaua.model.Ride"%>
+<%@page import="com.birnbaua.model.Vehicle"%>
+<%@page import="com.birnbaua.model.Driver"%>
+<%@page import="com.birnbaua.model.Airport"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Luke, I am your father">
+  <title>Rides</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/hotels">Hotels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/airports">Airports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/vehicles">Vehicles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/routes">Routes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/drivers">Drivers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/jsp_assignment/rides">Rides</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+<div class="container div-center">
+  <table id=hotels class="table">
+    <colgroup>
+      <col span="1" style="width: 20%;">
+      <col span="1" style="width: 20%;">
+      <col span="1" style="width: 15%;">
+      <col span="1" style="width: 15%;">
+      <col span="1" style="width: 10%;">
+      <col span="1" style="width: 10%;">
+      <col span="1" style="width: 10%;">
+    </colgroup>
+    <thead>
+    <tr>
+      <th>Hotel</th>
+      <th>Airport</th>
+      <th>Vehicle</th>
+      <th>Departure at</th>
+      <th>Duration</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <%
+    List<Route> routes = (List<Route>) request.getAttribute("routes");
+    for(Route route : routes) {
+    Time now = new Time(System.currentTimeMillis() + route.getDuration().getTime());
+    %>
+    <tr>
+      <td><%=route.getHotel().getName()%></td>
+      <td><%=route.getVehicle().getAirport().getName()%></td>
+      <td><%=route.getVehicle().getId()%></td>
+      <td><%=now%></td>
+      <td><%=route.getDuration()%></td>
+      <td><%=route.getPrice()%></td>
+      <td>
+        <form action="rides" method="post">
+          <input type="text" hidden="true" name="hotel" value="<%= route.getHotel().getId() %>">
+          <input type="text" hidden="true" name="airport" value="<%= route.getVehicle().getAirport().getIcaoCode() %>">
+          <input type="text" hidden="true" name="vehicle" value="<%= route.getVehicle().getId() %>">
+          <input type="text" hidden="true" name="duration" value="<%= route.getDuration().getTime() %>">
+          <input type="text" hidden="true" name="passangers" value="<%=  request.getAttribute("passangers") %>">
+          <input type="submit" value="Book">
+        </form>
+      </td>
+    </tr>
+    <%
+    }
+    %>
+  </table>
+</div>
+</body>
+</html>
