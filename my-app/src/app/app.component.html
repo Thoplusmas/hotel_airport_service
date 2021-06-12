@@ -13,17 +13,17 @@
   <hr>
 
   <table>
-    <tr>
-      <th>
-
-
-      </th>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-    </tr>
+    <thead>
+      <th><span>icao_code</span></th>
+      <th><span>desc</span></th>
+      <th><span>name</span></th>
+    </thead>
+        <tbody>
+        <tr *ngFor="let airport of airports">
+          <td>{{ airport.icao_code }}</td>
+          <td>{{ airport.desc }}</td>
+          <td>{{ airport.name }}</td>
+        </tr>
+        </tbody>
   </table>
 </div>

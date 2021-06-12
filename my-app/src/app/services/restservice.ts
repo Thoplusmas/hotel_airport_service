@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-//import { Airport } from './airport';
+import { Observable } from 'rxjs';
+import {Airport} from "../airport";
 
 
 @Injectable({
@@ -10,13 +11,13 @@ export class RestService {
 
   constructor(private http : HttpClient) { }
 
-  url : string = "http://localhost:4200/api/airport/"
+  url : string = "http://localhost:8989/api/airport/"
 
 
-  getAirports()
+  getAirports(): Observable<Airport[]>
   {
-    var airports = this.http.get<any[]>(this.url);
+    var airports = this.http.get<Airport[]>(this.url);
     console.log(airports);
-    return this.http.get<any[]>(this.url);
+    return airports;
   }
 }
