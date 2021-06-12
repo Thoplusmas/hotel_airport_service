@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/airport")
 class AirportController @Autowired constructor(service: AirportService) : AbstractController<Airport, String>(service,AirportController::class.qualifiedName.toString()) {

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/driver")
 class DriverController @Autowired constructor(service: DriverService) : AbstractController<Driver, String>(service,DriverController::class.qualifiedName.toString()) {
