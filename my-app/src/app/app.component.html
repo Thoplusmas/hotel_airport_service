@@ -1,12 +1,12 @@
+<app-navbar></app-navbar>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-  <a class="navbar-brand" href="#">{{title}}</a>
+  <a class="navbar-brand" href="app-routes">Routes</a>
 </nav>
 <div class="container">
   <div class="jumbotron">
     <h1 class="heading">Airport Information</h1>
     <span>
-      The essential facts about your favourite airports worldwide. <br />
-      Right here, at your fingertips.
+      Here you can find a list of airports. <br />
     </span>
   </div>
   <h1> Airports </h1>
@@ -26,4 +26,6 @@
         </tr>
         </tbody>
   </table>
+
+  <button pButton type="button" label="add Airport" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
 </div>

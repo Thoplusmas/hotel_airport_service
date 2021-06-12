@@ -1,0 +1,37 @@
+@use '../../../styles.scss';
+
+::ng-deep .p-menubar,.p-menu .p-menu-child{
+    border: 0px;
+    background: #2196F3 0 0 repeat-x !important;
+}
+::ng-deep .p-menubar .p-menuitem .p-menuitem-link:hover{
+    background-color:#54abf3 !important;
+}
+::ng-deep .p-menubar .p-menuitem .p-state-active{
+    background-color: #2196F3;
+}
+::ng-deep .p-menubar .p-menuitem.p-menuitem-active>.p-menuitem-link,
+.p-menubar .p-menuitem .p-menuitem-link:hover{
+    background-color:#186ba0;
+}
+::ng-deep .p-menubar .p-submenu-list {
+    background-color: #2196F3;
+}
+::ng-deep .menucus{
+    background: #2196F3 !important;
+}
+
+::ng-deep .p-menuitem-text {
+    color: #fff !important;
+}
+
+.p-menubar {
+    padding-left:32px;
+}
+  
+img#logo {
+    position:absolute;
+    left:0;
+    width: 32px;
+    height: 32px;
+}
