@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <a class="navbar-brand" href="#"></a>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="heading">Hotel Information</h1>
+    <span>
+      Here you can see the hotels. <br />
+    </span>
+  </div>
+  <h1> Hotels </h1>
+  <hr>
+
+  <table>
+    <thead>
+    <th><span>id</span></th>
+    <th><span>desc</span></th>
+    <th><span>name</span></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hotel of hotels">
+      <td>{{ hotel.id }}</td>
+      <td>{{ hotel.desc }}</td>
+      <td>{{ hotel.name }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

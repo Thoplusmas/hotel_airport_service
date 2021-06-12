@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <a class="navbar-brand" href="#"></a>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="heading">Booking Information</h1>
+    <span>
+      Here you can see the bookings. <br />
+    </span>
+  </div>
+  <h1> Bookings </h1>
+  <hr>
+
+  <table>
+    <thead>
+    <th><span>id</span></th>
+    <th><span>route_duration</span></th>
+    <th><span>price</span></th>
+    <th><span>airport</span></th>
+    <th><span>hotel</span></th>
+    <th><span>vehicle</span></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let route of routes">
+      <td>{{ route.id }}</td>
+      <td>{{ route.route_duration }}</td>
+      <td>{{ route.price }}</td>
+      <td>{{ route.airport }}</td>
+      <td>{{ route.hotel }}</td>
+      <td>{{ route.vehicle }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

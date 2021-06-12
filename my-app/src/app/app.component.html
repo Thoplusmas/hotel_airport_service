@@ -1,6 +1,15 @@
 <app-navbar></app-navbar>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-  <a class="navbar-brand" href="app-routes">Routes</a>
+  <a routerLink="/routes" routerLinkActive="active">Routes</a>
+  &nbsp;
+  <a routerLink="/bookings" routerLinkActive="active">Bookings</a>
+  &nbsp;
+  <a routerLink="/hotels" routerLinkActive="active">Hotels</a>
+  &nbsp;
+  <a routerLink="/drivers" routerLinkActive="active">Drivers</a>
+  &nbsp;
+  <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+
 </nav>
 <div class="container">
   <div class="jumbotron">
@@ -29,3 +38,5 @@
 
   <button pButton type="button" label="add Airport" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
 </div>
+
+<router-outlet></router-outlet>

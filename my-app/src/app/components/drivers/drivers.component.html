@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <a class="navbar-brand" href="#"></a>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="heading">Driver Information</h1>
+    <span>
+      Here you can see the drivers. <br />
+    </span>
+  </div>
+  <h1> Drivers </h1>
+  <hr>
+
+  <table>
+    <thead>
+    <th><span>pin</span></th>
+    <th><span>first_name</span></th>
+    <th><span>last_name</span></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let driver of drivers">
+      <td>{{ driver.pin }}</td>
+      <td>{{ driver.first_name }}</td>
+      <td>{{ driver.last_name }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
