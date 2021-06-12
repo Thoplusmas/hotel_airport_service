@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*
 import java.sql.Timestamp
 import javax.servlet.http.HttpServletRequest
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/booking")
 class BookingController @Autowired constructor(val serv: BookingService) : AbstractController<Booking, Int>(serv,BookingController::class.qualifiedName.toString()) {

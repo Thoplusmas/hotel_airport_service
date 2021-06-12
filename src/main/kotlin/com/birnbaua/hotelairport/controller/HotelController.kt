@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/hotel")
 class HotelController @Autowired constructor(service: HotelService) : AbstractController<Hotel, Int?>(service,HotelController::class.qualifiedName.toString()) {

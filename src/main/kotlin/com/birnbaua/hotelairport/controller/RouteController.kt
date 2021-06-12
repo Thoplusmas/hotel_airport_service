@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*
 import java.sql.Timestamp
 import javax.servlet.http.HttpServletRequest
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/route")
 class RouteController @Autowired constructor(val serv: RouteService) : AbstractController<Route, Int?>(serv,RouteController::class.qualifiedName.toString()) {
