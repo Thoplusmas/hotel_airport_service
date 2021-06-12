@@ -1,5 +1,5 @@
 export interface Airport {
-  icao_code: number;
+  icao: number;
   desc: string;
   name: string;
 };

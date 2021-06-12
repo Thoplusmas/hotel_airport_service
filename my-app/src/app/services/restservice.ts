@@ -11,7 +11,7 @@ export class RestService {
 
   constructor(private http : HttpClient) { }
 
-  url : string = "http://localhost:8989/api/airport/"
+  url : string = "http://localhost:8080/api/airport/"
 
 
   getAirports(): Observable<Airport[]>
