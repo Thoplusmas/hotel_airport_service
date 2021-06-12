@@ -1,0 +1,5 @@
+<div *ngIf="airport">
+	<ngui-map [center]="_pos" [zoom]="_zoomlevel" class="airport-detail-map fill">
+    <marker [position]="_pos" [title]="airport.name"></marker>
+  </ngui-map>
+</div>

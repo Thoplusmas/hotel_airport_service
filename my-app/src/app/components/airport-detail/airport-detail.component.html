@@ -1,0 +1,10 @@
+<div *ngIf="airport" class="airport-detail fill panel">
+	<div class="lead airport-detail-heading">{{airport.name}}</div>
+	<div>
+		<label>ID:</label> <span class="airport-detail-value">{{airport.id}}</span><br />
+		<label>ICAO:</label> <span class="airport-detail-value">{{airport.icao}}</span><br />
+    <label>IATA:</label> <span class="airport-detail-value">{{airport.iata}}</span><br />
+		<label>Location:</label> <span class="airport-detail-value">{{airport.city}}, {{airport.country}}</span><br />
+    <label>Coordinates:</label> <span class="airport-detail-value">{{airport.latitude | number:'.3-3'}}, {{airport.longitude | number:'.3-3'}}</span>
+	</div>
+</div>

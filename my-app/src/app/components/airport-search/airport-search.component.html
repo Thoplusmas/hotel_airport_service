@@ -1,0 +1,26 @@
+<div id="search-component">
+  <div class="search-box-wrapper">
+    <!-- TODO: display magnifying glass in search box -->
+  	<!-- TODO: display "searching results..." while fetching remote suggestions -->
+  	<input #searchBox id="search-box"
+      placeholder="Search for airports..."
+      [(ngModel)]="searchStr"
+      (keyup)="onKeyUp($event)"
+      (blur)="onBlur($event)"
+      (focus)="onFocus()"
+      class="form-control" />
+  </div>
+  <!--<div *ngIf="searchActive && displaySearching" class="completer-searching">{{textSearching}}</div>-->
+  <!--<div class="completer-searching">{{textSearching}}</div>-->
+  <!--<div *ngIf="!searchActive && (!items || items.length === 0)" class="completer-no-results">{{textNoResults}}</div>-->
+  <!--<div class="completer-no-results">{{textNoResults}}</div>-->
+  <!--<div *ngIf="isInitialized">-->
+  <div *ngIf="showSuggestions" class="search-suggestions">
+    <ul class="list-unstyled">
+      <li *ngFor="let airport of airports | async"
+  			(mousedown)="onSelect(airport)" class="search-result" >
+        {{airport.name}}
+      </li>
+    </ul>
+  </div>
+</div>
