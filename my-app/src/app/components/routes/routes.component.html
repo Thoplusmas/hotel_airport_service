@@ -32,4 +32,11 @@
     </tr>
     </tbody>
   </table>
+
+
+  <input type="text" [(ngModel)]="routes" id="icao" name="icao" placeholder="Route id">
+  <input type="text" [(ngModel)]="routes" placeholder="Route duration">
+  <input type="text" [(ngModel)]="routes" placeholder="Route price">
+  <button pButton type="button" label="add Route" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
+
 </div>

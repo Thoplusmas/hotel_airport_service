@@ -5,7 +5,7 @@ import {Route} from "../../models/route";
 import {Driver} from "../../models/driver";
 
 @Component({
-  selector: 'app-bookings',
+  selector: 'app-drivers',
   templateUrl: './drivers.component.html',
   styleUrls: ['./drivers.component.scss']
 })

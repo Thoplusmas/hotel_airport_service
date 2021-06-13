@@ -22,6 +22,6 @@ export class AppComponent implements OnInit {
   }
 
   onButtonClick() {
-    this.router.navigate([`./my-app/app-routes`], { relativeTo: this.route });
+    this.rs.postAirport(this.airport);
   }
 }

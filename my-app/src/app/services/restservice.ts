@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Airport} from "../models/airport";
@@ -13,12 +13,15 @@ import {Vehicle} from "../models/vehicle";
   providedIn: 'root'
 })
 export class RestService {
+  @Input() airportModel: Airport | undefined;
+  private airportInput: any;
 
   constructor(private http : HttpClient) { }
 
   getUrl : string = "http://localhost:8080/api/airport/"
-  getAvailableRoutesUrl : string = "http://localhost:8080/api/route?airport=1&available=true&hotel=1&passengers=1&time=1"
+  getAvailableRoutesUrl : string = "http://localhost:8080/api/route"
   postUrl : string = "http://localhost:8080/api/airport/"
+  postRouteUrl : string = "http://localhost:8080/api/route/"
   getHotelsUrl : string = "http://localhost:8080/api/hotel/"
   getBookingsUrl : string = "http://localhost:8080/api/booking/"
   getDriversUrl : string = "http://localhost:8080/api/driver/"
@@ -32,17 +35,24 @@ export class RestService {
     return airports;
   }
 
-  postAirport(airport: Airport | undefined): Airport
+  postAirport(Airport: any): Airport
   {
-    let Airport = this.http.post<Airport>(this.postUrl, airport);
+    let airport = this.http.post<Airport>(this.postUrl, JSON.stringify(Airport)).toPromise();
     console.log(airport);
-    return <Airport>airport;
+    return <Airport><unknown>airport;
   }
 
   getRoutes(): Observable<Route[]>
   {
     var routes = this.http.get<Route[]>(this.getAvailableRoutesUrl);
     return routes;
+  }
+
+  postRoute(Route: any): Airport
+  {
+    let route = this.http.post<Airport>(this.postRouteUrl, JSON.stringify(Route)).toPromise();
+    console.log(route);
+    return <Airport><unknown>route;
   }
 
   getBookings(): Observable<Booking[]>

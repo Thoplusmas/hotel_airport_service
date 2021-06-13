@@ -7,6 +7,7 @@ import {MenubarModule} from "primeng/menubar";
 import {ToastModule} from "primeng/toast";
 import {AppComponent} from "./app.component";
 import {ButtonModule} from "primeng/button";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {ButtonModule} from "primeng/button";
     HttpClientModule,
     MenubarModule,
     ToastModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

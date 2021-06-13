@@ -5,7 +5,7 @@ import {Route} from "../../models/route";
 import {Hotel} from "../../models/hotels";
 
 @Component({
-  selector: 'app-bookings',
+  selector: 'app-hotels',
   templateUrl: './hotels.component.html',
   styleUrls: ['./hotels.component.scss']
 })

@@ -11,10 +11,15 @@ import {Route} from "../../models/route";
 })
 export class RoutesComponent implements OnInit {
   routes: Route[] | undefined;
+  route: Route | undefined;
 
   constructor(private rs : RestService){}
 
   ngOnInit(): void{
     this.rs.getRoutes().subscribe((routes) => {this.routes = routes});
+  }
+
+  onButtonClick() {
+    this.rs.postRoute(this.route);
   }
 }
