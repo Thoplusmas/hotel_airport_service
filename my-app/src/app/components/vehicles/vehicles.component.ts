@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {RestService} from "../../services/restservice";
-import {Route} from "../../route";
-import {Vehicle} from "../../vehicle";
+import {Route} from "../../models/route";
+import {Vehicle} from "../../models/vehicle";
 
 @Component({
   selector: 'app-vehicles',

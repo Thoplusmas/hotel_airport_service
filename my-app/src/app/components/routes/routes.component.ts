@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {Routes} from "@angular/router";
 import {RestService} from "../../services/restservice";
-import {Route} from "../../route";
+import {Route} from "../../models/route";
 
 @Component({
   selector: 'app-routes',

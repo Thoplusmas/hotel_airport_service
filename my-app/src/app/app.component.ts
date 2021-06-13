@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RestService } from './services/restservice';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OnInit } from '@angular/core';
-import {Airport} from "./airport";
+import {Airport} from "./models/airport";
 
 @Component({
   selector: 'app-root',

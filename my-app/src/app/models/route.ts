@@ -4,8 +4,8 @@ import {Hotel} from "./hotels";
 
 export interface Route {
   id: number;
-  route_duration: string;
-  price: string;
+  duration: string;
+  price: number;
   airport: Airport;
   hotel: Hotel;
   vehicle: Vehicle;

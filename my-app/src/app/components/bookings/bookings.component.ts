@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {RestService} from "../../services/restservice";
-import {Route} from "../../route";
+import {Route} from "../../models/route";
+import {Booking} from "../../models/booking";
 
 @Component({
   selector: 'app-bookings',
@@ -9,11 +10,11 @@ import {Route} from "../../route";
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
-  routes: Route[] | undefined;
+  bookings: Booking[] | undefined;
 
   constructor(private rs : RestService){}
 
   ngOnInit(): void{
-    this.rs.getRoutes().subscribe((routes) => {this.routes = routes});
+    this.rs.getBookings().subscribe((bookings) => {this.bookings = bookings});
   }
 }

@@ -2,8 +2,8 @@ import {Route} from "./route";
 
 export interface Booking {
   id: number;
-  end_of_tour: string;
+  end: string;
   passengers: number;
-  start_of_tour: string;
+  start: string;
   route: Route;
 };

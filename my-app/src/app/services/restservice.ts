@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Airport} from "../airport";
-import {Route} from "../route";
-import {Hotel} from "../hotels";
-import {Driver} from "../driver";
-import {Vehicle} from "../vehicle";
+import {Airport} from "../models/airport";
+import {Route} from "../models/route";
+import {Booking} from "../models/booking";
+import {Hotel} from "../models/hotels";
+import {Driver} from "../models/driver";
+import {Vehicle} from "../models/vehicle";
 
 
 @Injectable({
@@ -19,6 +20,7 @@ export class RestService {
   getAvailableRoutesUrl : string = "http://localhost:8080/api/route?airport=1&available=true&hotel=1&passengers=1&time=1"
   postUrl : string = "http://localhost:8080/api/airport/"
   getHotelsUrl : string = "http://localhost:8080/api/hotel/"
+  getBookingsUrl : string = "http://localhost:8080/api/booking/"
   getDriversUrl : string = "http://localhost:8080/api/driver/"
   getVehiclesUrl : string = "http://localhost:8080/api/vehicle/"
 
@@ -41,6 +43,12 @@ export class RestService {
   {
     var routes = this.http.get<Route[]>(this.getAvailableRoutesUrl);
     return routes;
+  }
+
+  getBookings(): Observable<Booking[]>
+  {
+    var bookings = this.http.get<Booking[]>(this.getBookingsUrl);
+    return bookings;
   }
 
   getHotels(): Observable<Hotel[]>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {RestService} from "../../services/restservice";
-import {Route} from "../../route";
-import {Driver} from "../../driver";
+import {Route} from "../../models/route";
+import {Driver} from "../../models/driver";
 
 @Component({
   selector: 'app-bookings',
