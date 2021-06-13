@@ -48,11 +48,11 @@ export class RestService {
     return routes;
   }
 
-  postRoute(Route: any): Airport
+  postRoute(Route: any): Route
   {
-    let route = this.http.post<Airport>(this.postRouteUrl, JSON.stringify(Route)).toPromise();
+    let route = this.http.post<Route>(this.postRouteUrl, JSON.stringify(Route));
     console.log(route);
-    return <Airport><unknown>route;
+    return <Route><unknown>route;
   }
 
   getBookings(): Observable<Booking[]>

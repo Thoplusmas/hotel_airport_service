@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import {Routes} from "@angular/router";
 import {RestService} from "../../services/restservice";
 import {Route} from "../../models/route";
 
@@ -20,6 +19,6 @@ export class RoutesComponent implements OnInit {
   }
 
   onButtonClick() {
-    this.rs.postRoute(this.route);
+    this.rs.postRoute(JSON.stringify(this.route));
   }
 }

@@ -26,17 +26,19 @@
       <td>{{ route.id }}</td>
       <td>{{ route.duration }}</td>
       <td>{{ route.price }}</td>
-      <td>{{ route.airport }}</td>
-      <td>{{ route.hotel }}</td>
-      <td>{{ route.vehicle }}</td>
+      <td>{{ route.airport.name }}</td>
+      <td>{{ route.hotel.name }}</td>
+      <td>{{ route.vehicle.no }}</td>
     </tr>
     </tbody>
   </table>
 
 
-  <input type="text" [(ngModel)]="routes" id="icao" name="icao" placeholder="Route id">
   <input type="text" [(ngModel)]="routes" placeholder="Route duration">
   <input type="text" [(ngModel)]="routes" placeholder="Route price">
+  <input type="text" [(ngModel)]="routes" placeholder="Airport icao">
+  <input type="text" [(ngModel)]="routes" placeholder="Hotel id">
+  <input type="text" [(ngModel)]="routes" placeholder="Vehicle id">
   <button pButton type="button" label="add Route" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
 
 </div>

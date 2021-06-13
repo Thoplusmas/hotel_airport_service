@@ -22,6 +22,6 @@ export class AppComponent implements OnInit {
   }
 
   onButtonClick() {
-    this.rs.postAirport(this.airport);
+    this.rs.postAirport(JSON.stringify(this.airport));
   }
 }
