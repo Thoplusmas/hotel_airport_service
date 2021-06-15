@@ -1,0 +1,16 @@
+# stage 1
+
+FROM node:alpine AS my-app-build
+WORKDIR /app
+COPY my-app .
+RUN npm install && npm run build
+
+# stage 2
+
+FROM nginx:alpine
+COPY --from=my-app-build /app/dist/my-app /usr/share/nginx/html
+EXPOSE 80
+
+# build with `docker build -f Dockerfile_frontend -t hotel_airport_service_frontend .`
+# run with docker run -it --rm -p 9000:80 hotel_airport_service_frontend
+# visit http://localhost:9000/
