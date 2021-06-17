@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @EnableJpaRepositories
 @SpringBootApplication
-class HotelAirportApplication
+public class HotelAirportApplication
 
 fun main(args: Array<String>) {
     runApplication<HotelAirportApplication>(*args)
