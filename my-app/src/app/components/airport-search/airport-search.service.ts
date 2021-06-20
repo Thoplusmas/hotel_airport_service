@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Airport } from '../airport';
+import { Airport } from '../../models/airport';
 
 @Injectable()
 export class AirportSearchService {
@@ -16,7 +18,7 @@ export class AirportSearchService {
   private ApiBaseUrl = this.inMemoryWebApiBaseUrl;
 
 	constructor(
-		private http: Http
+		private http: HttpClient
 	) {}
 
 	// Note the shape of the data that the server returns.
@@ -30,12 +32,12 @@ export class AirportSearchService {
 	// 		.catch(this.handleError);
 	// }
 
-	searchAPI(term: string): Observable<Airport[]> {
+/*	searchAPI(term: string): Observable<Airport[]> {
 		let reqUrl = `${this.paxlifeApiQueryGetUrl}${term}`;
 		return this.http.get(reqUrl)
-			.map(response => response.json() as Airport[])
+			.map((response: { json: () => Airport[]; }) => response.json() as Airport[])
 			.catch(this.handleError);
-	}
+	}*/
 
 	private handleError(error: any): Promise<any> {
 		// for demo purposes only, TODO: add proper error handling

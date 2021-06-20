@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <a routerLink="/routes" routerLinkActive="active">Routes</a>
+  &nbsp;
+  <a routerLink="/bookings" routerLinkActive="active">Bookings</a>
+  &nbsp;
+  <a routerLink="/hotels" routerLinkActive="active">Hotels</a>
+  &nbsp;
+  <a routerLink="/drivers" routerLinkActive="active">Drivers</a>
+  &nbsp;
+  <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+</nav>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="heading">Airport Information</h1>
+    <span>
+      Here you can find a list of airports. <br />
+    </span>
+  </div>
+  <h1> Airports </h1>
+  <hr>
+
+  <table>
+    <thead>
+    <th><span>icao</span></th>
+    <th><span>desc</span></th>
+    <th><span>name</span></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let airport of airports">
+      <td>{{ airport.icao }}</td>
+      <td>{{ airport.desc }}</td>
+      <td>{{ airport.name }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <input type="text" [(ngModel)]="airport" id="icao" name="icao" placeholder="Airport icao">
+  <input type="text" [(ngModel)]="airport" placeholder="Airport desc">
+  <input type="text" [(ngModel)]="airport" placeholder="Airport name">
+  <button pButton type="button" label="add Airport" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
+</div>
+
+<router-outlet></router-outlet>

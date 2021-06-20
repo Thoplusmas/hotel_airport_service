@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { NguiMapComponent } from '@ngui/map';
 
-import { Airport } from '../airport';
+import { Airport } from '../../models/airport';
 
 const ZOOM_LEVEL = "13";
 
@@ -15,7 +15,7 @@ export class AirportDetailMapComponent implements OnInit, OnChanges {
   public _pos: any;
   public _zoomlevel: any;
 
-  @Input() airport: Airport;
+  @Input() airport: Airport | undefined;
 
   constructor() {}
 

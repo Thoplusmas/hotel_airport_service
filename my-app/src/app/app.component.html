@@ -1,45 +1,26 @@
-<app-navbar></app-navbar>
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-  <a routerLink="/routes" routerLinkActive="active">Routes</a>
-  &nbsp;
-  <a routerLink="/bookings" routerLinkActive="active">Bookings</a>
-  &nbsp;
-  <a routerLink="/hotels" routerLinkActive="active">Hotels</a>
-  &nbsp;
-  <a routerLink="/drivers" routerLinkActive="active">Drivers</a>
-  &nbsp;
-  <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+<div class="container" style="max-width: 550px">
+  <h2 class="text-center mb-5">Angular Login with Google</h2>
 
-</nav>
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="heading">Airport Information</h1>
-    <span>
-      Here you can find a list of airports. <br />
-    </span>
+  <div *ngIf="isLoggedin === false">
+    <div>
+      <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
+    </div>
   </div>
-  <h1> Airports </h1>
-  <hr>
 
-  <table>
-    <thead>
-      <th><span>icao</span></th>
-      <th><span>desc</span></th>
-      <th><span>name</span></th>
-    </thead>
-        <tbody>
-        <tr *ngFor="let airport of airports">
-          <td>{{ airport.icao }}</td>
-          <td>{{ airport.desc }}</td>
-          <td>{{ airport.name }}</td>
-        </tr>
-        </tbody>
-  </table>
+  <div *ngIf="isLoggedin === true">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" class="form-control" [value]="socialUser?.firstName" id="firstname" readonly>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" [value]="socialUser?.lastName" id="lastname" readonly>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" [value]="socialUser?.email" id="email" readonly>
+    </div>
 
-  <input type="text" [(ngModel)]="airport" id="icao" name="icao" placeholder="Airport icao">
-  <input type="text" [(ngModel)]="airport" placeholder="Airport desc">
-  <input type="text" [(ngModel)]="airport" placeholder="Airport name">
-  <button pButton type="button" label="add Airport" class="p-button mt-100 ml-100" (click)="onButtonClick()"></button>
+    <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
+  </div>
 </div>
-
-<router-outlet></router-outlet>

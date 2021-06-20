@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Airport } from '../airport'
+import { Airport } from '../../models/airport'
 
 @Component({
 	selector: 'airport-detail',
@@ -7,7 +7,7 @@ import { Airport } from '../airport'
 	styleUrls: ['./airport-detail.component.scss']
 })
 export class AirportDetailComponent {
-	@Input() airport: Airport;
+	@Input() airport: Airport | undefined;
 
 	registerAirport(airport: Airport){
 		this.airport = airport;
