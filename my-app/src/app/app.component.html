@@ -8,6 +8,23 @@
   </div>
 
   <div *ngIf="isLoggedin === true">
+    <app-navbar></app-navbar>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <a routerLink="/airport" routerLinkActive="active">Airport</a>
+      &nbsp;
+      <a routerLink="/routes" routerLinkActive="active">Routes</a>
+      &nbsp;
+      <a routerLink="/bookings" routerLinkActive="active">Bookings</a>
+      &nbsp;
+      <a routerLink="/hotels" routerLinkActive="active">Hotels</a>
+      &nbsp;
+      <a routerLink="/drivers" routerLinkActive="active">Drivers</a>
+      &nbsp;
+      <a routerLink="/vehicles" routerLinkActive="active">Vehicles</a>
+    </nav>
+    <span>
+      Succesfully logged in with google account. Here you can find your Account Details: <br />
+    </span>
     <div class="form-group">
       <label>First Name</label>
       <input type="text" class="form-control" [value]="socialUser?.firstName" id="firstname" readonly>
@@ -24,3 +41,4 @@
     <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
   </div>
 </div>
+<router-outlet></router-outlet>

@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private rs: RestService, private route: ActivatedRoute, private router: Router
   ) { }
 
   ngOnInit() {

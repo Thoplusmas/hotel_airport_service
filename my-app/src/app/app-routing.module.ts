@@ -7,8 +7,10 @@ import {BookingsComponent} from "./components/bookings/bookings.component";
 import {HotelsComponent} from "./components/hotels/hotels.component";
 import {DriversComponent} from "./components/drivers/drivers.component";
 import {VehiclesComponent} from "./components/vehicles/vehicles.component";
+import {AirportComponent} from "./components/airport/airport.component";
 
 const routes: Routes = [
+  { path: 'airport', component: AirportComponent },
   { path: 'routes', component: RoutesComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'hotels', component: HotelsComponent },
@@ -25,4 +27,4 @@ const routes: Routes = [
   exports: [RouterModule, NavbarComponent]
 })
 export class AppRoutingModule { }
-export const routingComponents = [RoutesComponent, BookingsComponent, HotelsComponent, DriversComponent, VehiclesComponent]
+export const routingComponents = [AirportComponent, RoutesComponent, BookingsComponent, HotelsComponent, DriversComponent, VehiclesComponent]
