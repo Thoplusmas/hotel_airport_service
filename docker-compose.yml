@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app-mariadb:
+    container_name: app-mariadb
+    image: mariadb/server:10.4
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: hotel_airport
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    restart: always
+  api:
+    container_name: backend-api
+    depends_on:
+      - app-mariadb
+    build:
+      context: .
+      dockerfile: Dockerfile_backend
+    # ports:
+    #   - 8080:8080

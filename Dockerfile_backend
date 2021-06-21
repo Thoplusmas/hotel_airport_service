@@ -9,6 +9,8 @@ RUN mvn verify clean
 ADD . /
 RUN mvn package -DskipTests
 
+EXPOSE 3306
+
 # Part 2: use the JAR file used in the first part and copy it across ready to RUN
 FROM openjdk:11-jdk
 WORKDIR /root/
@@ -16,6 +18,6 @@ WORKDIR /root/
 ## → this relies on your MAVEN package command building a jar 
 ## that matches *-jar-with-dependencies.jar with a single match
 COPY --from=0 /target/*0.0.1-SNAPSHOT.jar app.jar 
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./app.jar"]
+ENTRYPOINT ["java","-jar","./app.jar"]
 
 # build with `docker build -f Dockerfile_backend -t hotel_airport_service_backend .`
